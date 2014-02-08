@@ -69,3 +69,4 @@ end
 gem 'carrierwave'
 
 ruby "1.9.3"
+gem 'unicorn'
