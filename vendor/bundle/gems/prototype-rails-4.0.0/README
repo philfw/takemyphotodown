@@ -1,0 +1,17 @@
+prototype-rails provides Prototype, Scriptaculous, and RJS on Rails 3.1
+and later.
+
+Prototype and Scriptaculous are pulled in by the asset pipeline, so you don't
+need to copy the source files into your app. You may reference them in your
+s app/assets/javascripts/application.js:
+
+    //= require prototype
+    //= require prototype_ujs
+    //= require effects
+    //= require dragdrop
+    //= require controls
+
+prototype-rails supports RJS debugging. RJS responses are wrapped to catch
+exceptions, alert() them, and re-raise the exception. Debugging is disabled by
+default. To enable in development, set `config.action_view.debug_rjs = true`
+in config/environments/development.rb.
