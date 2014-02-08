@@ -8,10 +8,10 @@ class TakedownMailer < ActionMailer::Base
   	mail to: user.email, subject: "Sign Up Confirmation"
   end
 
-  def contact_valcu(from="valcu.webmaster@gmail.com", to_emails, subject="DMCA Takedown Notice and Request", body)
-    @from = from
+  def contact_valcu(from, to_emails, subject, body)
+    @from = from || "valcu.webmaster@gmail.com"
   	@to_emails = to_emails
-  	@subject = subject
+  	@subject = subject || "DMCA Takedown Notice and Request"
   	@body = body
 
     @to_emails.each do |to_email|
