@@ -1,0 +1,14 @@
+<div class="page-header">
+  <div class="col-sm-offset-2">
+    <h2>Take My Photo Down! - Make Sure You Have the Correct Images</h2>
+  </div>
+</div>
+<hr>
+<br />
+<%= render layout: 'shared/steps_form' do |f| %>
+  <%#= f.simple_fields_for :image_uploads do |builder| %>
+    <div class="col-sm-offset-3">
+      <%= link_to_add_fields "Add Image to Upload", f, :image_uploads %>
+    </div>
+  <%# end %>
+<% end %>

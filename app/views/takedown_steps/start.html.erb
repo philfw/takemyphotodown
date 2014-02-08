@@ -1,0 +1,13 @@
+<div class="page-header">
+  <div class="col-sm-offset-2">
+    <h2>Take My Photo Down! - Initial Info</h2>
+  </div>
+</div>
+<%= render layout: 'shared/steps_form' do |f| %>
+  <%= f.as_guest, label: "Keep track of this takedown notice in the database?", as: :radio_buttons %>
+  <hr>
+  <div class="col-sm-offset-3">
+    <%#= link_to_add_fields "Add Cap Table to Upload", f, :file_stores %>
+  </div>
+  <hr>
+<% end %>

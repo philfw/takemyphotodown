@@ -1,0 +1,13 @@
+<div class="removable_fields">
+  <fieldset>
+    <div class="form-inputs">
+      <%= f.input :image, as: :file %>
+      <%= f.input :mark_for_destruction, label: "Destroy image as soon as takedown has been sent?", collection: [[TRUE, "Destroy"],[FALSE, "Save"]], as: :radio_buttons %>
+      <%= f.hidden_field :_destroy %>
+    </div>
+    <div class="col-sm-offset-3">
+      <%= link_to_remove_fields "Remove", f %>
+    </div>
+  </fieldset>
+<hr>
+</div>

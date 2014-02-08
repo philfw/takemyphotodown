@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @image_upload.user_id %>
+</p>
+
+<p>
+  <strong>Takedown:</strong>
+  <%= @image_upload.takedown_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @image_upload.image %>
+</p>
+
+<p>
+  <strong>Mark for destruction:</strong>
+  <%= @image_upload.mark_for_destruction %>
+</p>
+
+<%= link_to 'Edit', edit_image_upload_path(@image_upload) %> |
+<%= link_to 'Back', image_uploads_path %>

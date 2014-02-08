@@ -1,0 +1,32 @@
+<%= simple_form_for @steps_model, wrapper: :bootstrap, html: {class: "form-horizontal"}, url: wizard_path do |f| %>
+  <% if @steps_model.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@steps_model.errors.count, "error") %> prohibited this valuation model from being saved:</h2>
+      <ul>
+      <% @steps_model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :id, as: :hidden %>
+
+    <%= yield f %>
+  <hr>
+  <div class="form-group">
+    <div class="actions">
+      <div class="col-sm-offset-1">
+        <% unless step == wizard_steps.first %>
+          <%= link_to ('<span class="glyphicon glyphicon-chevron-left"></span> '.html_safe + "previous step"), previous_wizard_path((@steps_model.class.name.to_s + "_id").to_sym => @steps_model.id) %>
+        <% end %>
+        <%= f.button :submit, commit: "Save", :value => "Save", :class => 'btn btn-primary' %>
+        <%= f.button :submit, :value => (step == wizard_steps.last ? "Save and Finish" : "Save and Next"), :class => 'btn btn-primary' %>
+        <% unless step == wizard_steps.last %>
+          <%=  link_to (("skip this step " + '<span class="glyphicon glyphicon-chevron-right"></span>').html_safe), next_wizard_path((@steps_model.class.name.to_s + "_id").to_sym => @steps_model.id) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<hr>
+

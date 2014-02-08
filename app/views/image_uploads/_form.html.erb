@@ -1,0 +1,38 @@
+<% unless @image_upload.blank? %>
+  <%= form_for(@image_upload) do |f| %>
+    <% if @image_upload.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@image_upload.errors.count, "error") %> prohibited this image_upload from being saved:</h2>
+  
+        <ul>
+        <% @image_upload.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= f.label :user_id %><br>
+      <%= f.number_field :user_id %>
+    </div>
+    <div class="field">
+      <%= f.label :takedown_id %><br>
+      <%= f.number_field :takedown_id %>
+    </div>
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.text_field :image %>
+    </div>
+    <div class="field">
+      <%= f.label :mark_for_destruction %><br>
+      <%= f.check_box :mark_for_destruction %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% else %>
+  <%= render partial: "image_uploads/upload_fields", locals: {f: f} %>
+<% end %>
+

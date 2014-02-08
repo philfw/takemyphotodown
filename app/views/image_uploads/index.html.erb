@@ -1,0 +1,33 @@
+<h1>Listing image_uploads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Takedown</th>
+      <th>Image</th>
+      <th>Mark for destruction</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image_uploads.each do |image_upload| %>
+      <tr>
+        <td><%= image_upload.user_id %></td>
+        <td><%= image_upload.takedown_id %></td>
+        <td><%= image_upload.image %></td>
+        <td><%= image_upload.mark_for_destruction %></td>
+        <td><%= link_to 'Show', image_upload %></td>
+        <td><%= link_to 'Edit', edit_image_upload_path(image_upload) %></td>
+        <td><%= link_to 'Destroy', image_upload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image upload', new_image_upload_path %>
