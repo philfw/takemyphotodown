@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery.bootstrap.wizard
 //= require turbolinks
 //= require_tree .
 
@@ -26,3 +27,7 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $(link).parent().before(content.replace(regexp, new_id));
 }
+
+$(document).ready(function() {
+    $('#rootwizard').bootstrapWizard();
+});

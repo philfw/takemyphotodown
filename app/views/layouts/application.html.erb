@@ -46,8 +46,24 @@
         </div>
       </div>
     </div>
+    <% if defined? wizard_path %>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= render partial: "takedown_steps/wizard_steps_nav", locals: {steps_model: @steps_model, steps: wizard_steps, step: step} %>
+        </div>
+      </div>
+    <% end %>
 
     <%= yield %>
+
+    <% if defined? wizard_path %>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= render partial: "takedown_steps/wizard_pager", locals: {steps_model: @steps_model, steps: wizard_steps, step: step} %>
+          <br />
+        </div>
+      </div>
+    <% end %>
 
 
 

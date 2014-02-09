@@ -27,12 +27,12 @@
     <div class="actions">
       <div class="col-sm-offset-1">
         <% unless step == wizard_steps.first %>
-          <%= link_to ('<span class="glyphicon glyphicon-chevron-left"></span> '.html_safe + "previous step"), previous_wizard_path((@steps_model.class.name.to_s + "_id").to_sym => @steps_model.id) %>
+          <%#= link_to ('<span class="glyphicon glyphicon-chevron-left"></span> '.html_safe + "previous step"), previous_wizard_path((@steps_model.class.name.to_s + "_id").to_sym => @steps_model.id) %>
         <% end %>
         <%= f.button :submit, commit: "Save", :value => "Save", :class => 'btn btn-primary' %>
         <%= f.button :submit, :value => (step == wizard_steps.last ? "Save and Finish" : "Save and Next"), :class => 'btn btn-primary' %>
         <% unless step == wizard_steps.last %>
-          <%=  link_to (("skip this step " + '<span class="glyphicon glyphicon-chevron-right"></span>').html_safe), next_wizard_path((@steps_model.class.name.to_s + "_id").to_sym => @steps_model.id) %>
+          <%#=  link_to (("skip this step " + '<span class="glyphicon glyphicon-chevron-right"></span>').html_safe), next_wizard_path((@steps_model.class.name.to_s + "_id").to_sym => @steps_model.id) %>
         <% end %>
       </div>
     </div>

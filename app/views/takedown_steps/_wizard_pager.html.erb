@@ -1,0 +1,12 @@
+<% unless steps_model.nil? || steps.blank? || step.blank? %>
+
+  <div>
+    <ul class="pager wizard">
+      <li class="previous first" style="display:none;"><%= link_to "First", wizard_path(steps.first.to_s) %></li>
+      <li class="previous"><%= link_to "Previous", wizard_path(steps[[steps.index(step) - 1, 0].max]) %></li>
+      <li class="next last" style="display:none;"><%= link_to "Last", wizard_path(steps.first.to_s) %></li>
+      <li class="next"><%= link_to "Next", wizard_path(steps[[steps.index(step) + 1, 0].max]) %></li>
+    </ul>
+  </div>
+
+<% end %>

@@ -1,0 +1,27 @@
+<% unless steps_model.nil? || steps.blank? || step.blank? %>
+
+  <div id="rootwizard">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul>
+            <% steps.each_with_index do |step_item, index| %>
+              <li><a href="#tab#{index.to_s}" data-toggle="tab"><%= step_item %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="bar" class="progress progress-striped active">
+    <div class="bar"></div>
+  </div>
+  <div class="tab-content">
+    <% steps.each_with_index do |step_item, index| %>
+      <div class="tab-pane fade #{step_item == step ? 'in active' : '' }" id="tab#{index}">
+        <%= step_item %>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>
