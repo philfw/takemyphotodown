@@ -27,5 +27,6 @@ module Takemyphotodown
     config.assets.paths += Dir["#{config.root}/tmp/image_uploads/**/"]
 
     config.assets.precompile += %w( .svg .eot .woff .ttf )
+    config.middleware.use "PDFKit::Middleware", :print_media_type => true
   end
 end

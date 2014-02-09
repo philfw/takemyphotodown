@@ -4,6 +4,7 @@
   <title>TakeMyPhotoDown</title>
   <%= stylesheet_link_tag :href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/themes/ui-lightness/jquery-ui.css", :rel => "stylesheet", :type => "text/css" %>
   <%= javascript_include_tag :src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/jquery-ui.min.js" %>
+  <%#= javascript_include_tag :src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/jquery-ui.min.js" %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -26,26 +27,36 @@
           <ul class="nav navbar-nav">
             <li><%= link_to "Home", root_url, class: "active" %></li>
             <li><%= link_to "My Takedowns", takedowns_path %>
-            <li><a href="#about">About</a></li>
+            <li><%= link_to "About", info_about_path %>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-    <div class="jumbotron">
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-sm-offset-4">
+    <div class="">
+      <%= link_to (image_tag "TakeMyPhotoDown5_cropped.png", class: "media-object", size: "300x200"), class: "pull-left" %>
+    </div>
+  </div>
+</div>
+<!-- 
+    <div class="">
       <div class="container">
         <div class="media">
           <div class="col-sm-4">
             <%= link_to (image_tag "TakeMyPhotoDown5.png", class: "media-object"), class: "pull-left" %>
           </div>
           <div class="media-body">
-            <h1 class="media-heading">Take My Photo Down!</h1>
+            <h2 class="media-heading">Take My Photo Down!</h2>
             <p>The easiest way to send a takedown notice under the Digital Millenium Copyright Act (DMCA).</p>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    <hr>
+    <br />
     <% if defined? wizard_path %>
       <div class="row">
         <div class="col-sm-12">
@@ -64,6 +75,16 @@
         </div>
       </div>
     <% end %>
+
+    <hr>
+    <div class="row">
+      <div class="col-sm-offset-1">
+        <p>Copyright <%= Date.today.year.to_s %>, TakeMyPhotoDown Hack Team.</p>
+        <p>All trademarks and registered trademarks appearing on this site are the property of their respective owners.</p>
+      </div>
+    </div>
+    <br />
+    <br />
 
 
 

@@ -8,6 +8,7 @@ Takemyphotodown::Application.routes.draw do
   resources :image_uploads
 
     root 'info#index'
+    get 'info/about' => 'info#about'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

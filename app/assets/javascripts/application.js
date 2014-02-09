@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require jquery.bootstrap.wizard
+//= require jquery.bootstrap.wizard.js
+//= require prettify.js
 //= require turbolinks
 //= require_tree .
 
