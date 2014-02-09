@@ -1,11 +1,9 @@
 <div class="page-header">
-  <div class="col-sm-offset-2">
+  <div class="col-sm-6 col-sm-offset-1">
     <h2>Upload the Original Photographs</h2>
+    <h6>Please upload your original photograph of each offending image. If you no longer have the original photograph, please take a "screenshot" of where the photograph is currently posted and upload the screenshot.</h6>
   </div>
 </div>
-<hr>
-<br />
-<h3>Please upload your original photograph of each offending image. If you no longer have the original photograph, please take a "screenshot" of where the photograph is currently posted and upload the screenshot.</h3>
 <%= render layout: 'layouts/steps_form' do |f| %>
   <%= f.simple_fields_for :image_uploads, f.object.image_uploads.build do |builder| %>
     <%= render partial: "image_uploads/upload_fields", locals: {f: builder} %>

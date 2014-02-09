@@ -1,15 +1,74 @@
+<div class="row"><div class="col-sm-10">
+<table class="table table-condensed">
 <div class="removable_fields">
   <fieldset>
     <div class="form-inputs">
-      <%= f.input :selfie, label: "Did you take this photograph yourself ... of yourself?" %>
-      <%= f.input :title, label: "What did you name this photo?" %>
-      <%= f.input :sending_method_of_photograph, label: "Please indicate how your original photograph was first distributed.", hint: "Please indicate the manner in which the original photograph was distributed. Examples include text, email, mail, or if the photo was stolen in some manner." %>
-      <%= f.input :offending_title, label: "Does the photograph have a title where it is being hosted on the allegedly infringing website? If so, what is the title name?" %>
-      <%= f.input :description, label: "Describe your photograph", placeholder: "E.g., Selfie in bathroom", hint: "The description of your photograph should be as complete as possible. Please include where the picture was taken, whether the picture was taken in front of a mirror, the lighting conditions, what pose you were in, and any other identifying features. If there are multiple pictures please describe each picture individually." %>
-      <%= f.input :offending_website_name, label: "What is the name of the website hosting the allegedly infringing photograph?", placeholder: "E.g., myex.com", hint: "What is the name of the website hosting the allegedly infringing photograph?", hint: "Only one DMCA takedown form can be used per website. If you wish to have your photo taken down from multiple websites you will need to fill out a separate DMCA form per website." %>
-      <%= f.input :offending_url, placeholder: "Copy and Paste URL", hint: "You should include a link to the specific location on the website where your picture can be found. Please copy the web address (URL) where the picture is displayed and paste it into the area. It is not as effective if you only provide the URL to the main webpage as opposed to the specific page where your pictures appear." %>
-      <%= f.input :image, as: :file, label: "Browse to Upload the Original Photo", hint: "A copy of my original photograph(s) appear(s) at the following URLs" %>
-      <%= f.input :mark_for_trash, label: "Destroy image as soon as takedown has been sent?", collection: [[TRUE, "Destroy"],[FALSE, "Save"]], as: :radio_buttons %>
+   <tr><td>
+      <%= f.input :image, as: :file, label: "Browse to Upload the Original Photo" %>
+   <div class="row"><div class="col-sm-8 col-sm-offset-2">
+   <p class="text-left"><i>A copy of my original photograph(s) appear(s) at the following URLs.</i></p>
+   </div></div>
+   </td></tr>
+    <tr><td>
+      <div class="row">
+      <div class="col-sm-2">
+      <p class="text-right">Did you take this photograph of yourself?</p>
+      </div>
+      <div class="col-sm-1">
+            <%= f.input :selfie, label: false, as: :radio_buttons %>
+      </div>
+      </div>
+   <div class="row"><div class="col-sm-8 col-sm-offset-2">
+   <p class="text-left"><i>Answer yes if this is a "selfie".</i></p>
+   </div></div>
+   </td></tr>
+   <tr><td>
+      <%= f.input :sending_method_of_photograph, label: "Please indicate how your original photograph was first distributed.", input_html: {style: 'height:100px; width: 60%'} %>
+   <div class="row"><div class="col-sm-8 col-sm-offset-2">
+   <p class="text-left"><i>Please indicate the manner in which the original photograph was distributed. Examples include text, email, mail, or if the photo was stolen in some manner.</i></p>
+   </div></div>
+   </td></tr>
+   <tr><td>
+      <%= f.input :offending_title, label: "Does the photograph have a title where it is being hosted on the allegedly infringing website? If so, what is the title name?", input_html: {style: 'height:100px; width: 30%'} %>
+   <div class="row"><div class="col-sm-8 col-sm-offset-2">
+   <p class="text-left"><i>Photo name as used/identified by offending website.</i></p>
+   </div></div>
+   </td></tr>
+   <tr><td>
+      <%= f.input :description, label: "Describe your photograph", input_html: {style: 'height:200px; width: 60%'}, placeholder: "E.g., Selfie in bathroom" %>
+   <div class="row"><div class="col-sm-8 col-sm-offset-2">
+   <p class="text-left"><i>The description of your photograph should be as complete as possible. Please include where the picture was taken, whether the picture was taken in front of a mirror, the lighting conditions, what pose you were in, and any other identifying features. If there are multiple pictures please describe each picture individually.</i></p>
+   </div></div>
+   </td></tr>
+   <tr><td>
+      <%= f.input :offending_website_name, label: "What is the name of the website hosting the allegedly infringing photograph?", input_html: {style: 'height:30px; width: 40%'}, placeholder: "E.g., myex.com", hint: "What is the name of the website hosting the allegedly infringing photograph?" %>
+   <div class="row"><div class="col-sm-8 col-sm-offset-2">
+   <p class="text-left"><i>Only one DMCA takedown form can be used per website. If you wish to have your photo taken down from multiple websites you will need to fill out a separate DMCA form per website.</i></p>
+   </div></div>
+   </td></tr>
+   <tr><td>
+      <%= f.input :offending_url, placeholder: "Copy and Paste URL", input_html: {style: 'height:200px; width: 60%'} %>
+   <div class="row"><div class="col-sm-8 col-sm-offset-2">
+   <p class="text-left"><i>You should include a link to the specific location on the website where your picture can be found. Please copy the web address (URL) where the picture is displayed and paste it into the area. It is not as effective if you only provide the URL to the main webpage as opposed to the specific page where your pictures appear. If there are mutliple URLs, please insert each URL separated by a space, commo or semicolon.</i></p>
+   </div></div>
+   </td></tr>
+
+
+    <tr><td>
+      <div class="row">
+      <div class="col-sm-2">
+      <p class="text-right">Destroy image as soon as takedown has been sent?</p>
+      </div>
+      <div class="col-sm-1">
+            <%= f.input :mark_for_trash, label: false, as: :radio_buttons %>
+      </div>
+      </div>
+   <div class="row"><div class="col-sm-8 col-sm-offset-2">
+   <p class="text-left"><i>Delete image?</i></p>
+   </div></div>
+   </td></tr>
+
+   <tr><td>
       <%= f.hidden_field :_destroy %>
     </div>
     <div class="col-sm-offset-3">
@@ -18,7 +77,10 @@
   </fieldset>
 <hr>
 </div>
+   </div></div>
+   </td></tr>
 
+</table>
 
 
 <!-- 

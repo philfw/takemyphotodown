@@ -9,6 +9,7 @@ Takemyphotodown::Application.routes.draw do
 
     root 'info#index'
     get 'info/about' => 'info#about'
+    get 'info/contact' => 'info#contact'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -3,9 +3,29 @@
     <h2>Identify the Offending Website</h2>
   </div>
 </div>
+<div class="row"><div class="col-sm-10 col-sm-offset-1">
+<table class="table table-condensed">
 <%= render layout: 'layouts/steps_form' do |f| %>
   <%#= f.input :notice_date, label: "", placeholder: "", hint: "" %>
-  <%= f.input :offending_urls, label: "Photograph URL(s)", placeholder: "Copy and Paste URL", hint: "You should include a link to the specific location on the website where your picture can be found. Please copy the web address (URL) where the picture is displayed and paste it into the area. It is not as effective if you only provide the URL to the main webpage as opposed to the specific page where your pictures appear." %>
-  <%= f.input :offending_website_names, label: "E.g., myex.com", placeholder: "What is the name of the website hosting the allegedly infringing photograph?", hint: "Only one DMCA takedown form can be used per website. If you wish to have your photo taken down from multiple websites you will need to fill out a separate DMCA form per website." %>
-  <%= f.input :destination_emails, label: "Email(s) where the DMCA whould be sent", placeholder: "privacy@myxxx.com, publicity@youxxx.com", hint: "This is where the notice will be sent." %>
+  <tr><td>
+  <%= f.input :offending_urls, label: "Photograph URL(s)", input_html: {style: 'height:100px; width: 30%'}, placeholder: "Copy and Paste URL" %>
+   <div class="row"><div class="col-sm-8 col-sm-offset-3">
+   <p class="text-left"><i>You should include a link to the specific location on the website where your picture can be found. Please copy the web address (URL) where the picture is displayed and paste it into the area. It is not as effective if you only provide the URL to the main webpage as opposed to the specific page where your pictures appear.  If there are mutliple URLs, please insert each URL separated by a space, comma or semicolon.</i></p>
+   </div></div>
+   </td></tr>
+   <tr><td>
+  <%= f.input :offending_website_names, placeholder: "E.g., myex.com", input_html: {style: 'height:100px; width: 30%'}, label: "What is the name of the website hosting the allegedly infringing photograph?" %>
+   <div class="row"><div class="col-sm-8 col-sm-offset-3">
+   <p class="text-left"><i>Only one DMCA takedown form can be used per website. If you wish to have your photo taken down from multiple websites you will need to fill out a separate DMCA form per website.</i></p>
+   </div></div>
+   </td></tr>
+   <tr><td>
+  <%= f.input :destination_emails, label: "Email(s) where the DMCA whould be sent", placeholder: "privacy@myxxx.com, publicity@youxxx.com", type: :textarea, input_html: {style: 'height:100px; width: 30%'} %>
+   <div class="row"><div class="col-sm-8 col-sm-offset-3">
+   <p class="text-left"><i>In order to ensure that that your DMCA takedown notice is delivered to the appropriate location, you should first check the website for any listed contact information. The contact information for the offending website might also be in our contact list. Please go to whois.com or whoishostingthis.com and search for the domain name. Once you have the domain name find the e-mail used to register the site, and then enter it this field.</i></p>
+   </div></div>
+   </td></tr>
+
 <% end %>
+</table>
+</div></div>

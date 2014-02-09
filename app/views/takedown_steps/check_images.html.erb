@@ -13,7 +13,25 @@
       <br />
       <hr>
     <% end %>
-    <%= f.input :images_confirmed, label: "These are correct?", as: :radio_buttons %>
+<table>
+
+    <tr><td>
+      <div class="row">
+      <div class="col-sm-2">
+      <p class="text-right">Are these correct?</p>
+      </div>
+      <div class="col-sm-1 col-sm-offset-2">
+            <%= f.input :images_confirmed, label: false, as: :radio_buttons %>
+      </div>
+      </div>
+   <div class="row"><div class="col-sm-8 col-sm-offset-3">
+   <p class="text-left"><i>Be sure to remove any mistakenly uploaded images.</i></p>
+   </div></div>
+   </td></tr>
+</table>
+
+
+
     <hr>
     <div class="col-sm-offset-3">
       <%#= link_to_add_fields "Add Cap Table to Upload", f, :file_stores %>
