@@ -90,7 +90,7 @@
 
     <%= yield %>
 
-    <% if defined? wizard_path %>
+    <% if FALSE && defined? wizard_path %>
       <div class="row">
         <div class="col-sm-12">
           <%= render partial: "takedown_steps/wizard_pager", locals: {steps_model: @steps_model, steps: wizard_steps, step: step} %>
