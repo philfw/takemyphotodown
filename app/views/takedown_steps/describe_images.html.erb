@@ -1,0 +1,21 @@
+<div class="page-header">
+  <div class="col-sm-offset-2">
+    <h2>Describe Your Photos</h2>
+  </div>
+</div>
+<%= render layout: 'layouts/steps_form' do |f| %>
+  <%= f.input :photograph_descriptions, label: "Descriptions of the Images", placeholder: "E.g., Selfie in bathroom", hint: "The description of your photograph should be as complete as possible. Please include where the picture was taken, whether the picture was taken in front of a mirror, the lighting conditions, what pose you were in, and any other identifying features. If there are multiple pictures please describe each picture individually." %>
+  <%= f.input :photograph_names, label: "Photograph(s) Label", hint: "Does the photograph have a title where it is being hosted on the allegedly infringing website? If so, what is the title name?" %>
+  <%= f.input :sending_method_of_photograph, label: "Please indicate how your original photograph(s) was first distributed.", hint: "Please indicate the manner in which the original photograph was distributed. Examples include text, email, mail, or if the photo was stolen in some manner." %>
+  
+<% end %>
+
+
+<!-- 
+website_name_dropdown_menu
+
+H: The “Whois” information of the website where the infringing photograph appears is important to ensure that your DMCA takedown notice is delivered to the appropriate location. If your wedsite is not on the dropdown list of applicable sites, please go to whois.com or whoishostingthis.com and search for the domain name. Once you have the domain name find the e-mail used to register the site, and then enter it this field. -->
+
+<!-- 
+L: Please use the dropdown menu to select the “Whois” information of the website(s) where a copy of your original photograph appears
+ -->

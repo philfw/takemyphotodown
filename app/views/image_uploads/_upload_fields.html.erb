@@ -1,8 +1,15 @@
 <div class="removable_fields">
   <fieldset>
     <div class="form-inputs">
-      <%= f.input :image, as: :file %>
-      <%= f.input :mark_for_destruction, label: "Destroy image as soon as takedown has been sent?", collection: [[TRUE, "Destroy"],[FALSE, "Save"]], as: :radio_buttons %>
+      <%= f.input :selfie, label: "Did you take this photograph yourself ... of yourself?" %>
+      <%= f.input :title, label: "What did you name this photo?" %>
+      <%= f.input :sending_method_of_photograph, label: "Please indicate how your original photograph was first distributed.", hint: "Please indicate the manner in which the original photograph was distributed. Examples include text, email, mail, or if the photo was stolen in some manner." %>
+      <%= f.input :offending_title, label: "Does the photograph have a title where it is being hosted on the allegedly infringing website? If so, what is the title name?" %>
+      <%= f.input :description, label: "Describe your photograph", placeholder: "E.g., Selfie in bathroom", hint: "The description of your photograph should be as complete as possible. Please include where the picture was taken, whether the picture was taken in front of a mirror, the lighting conditions, what pose you were in, and any other identifying features. If there are multiple pictures please describe each picture individually." %>
+      <%= f.input :offending_website_name, label: "What is the name of the website hosting the allegedly infringing photograph?", placeholder: "E.g., myex.com", hint: "What is the name of the website hosting the allegedly infringing photograph?", hint: "Only one DMCA takedown form can be used per website. If you wish to have your photo taken down from multiple websites you will need to fill out a separate DMCA form per website." %>
+      <%= f.input :offending_url, placeholder: "Copy and Paste URL", hint: "You should include a link to the specific location on the website where your picture can be found. Please copy the web address (URL) where the picture is displayed and paste it into the area. It is not as effective if you only provide the URL to the main webpage as opposed to the specific page where your pictures appear." %>
+      <%= f.input :image, as: :file, label: "Browse to Upload the Original Photo", hint: "A copy of my original photograph(s) appear(s) at the following URLs" %>
+      <%= f.input :mark_for_trash, label: "Destroy image as soon as takedown has been sent?", collection: [[TRUE, "Destroy"],[FALSE, "Save"]], as: :radio_buttons %>
       <%= f.hidden_field :_destroy %>
     </div>
     <div class="col-sm-offset-3">
@@ -11,3 +18,14 @@
   </fieldset>
 <hr>
 </div>
+
+
+
+<!-- 
+website_name_dropdown_menu
+
+H: The “Whois” information of the website where the infringing photograph appears is important to ensure that your DMCA takedown notice is delivered to the appropriate location. If your wedsite is not on the dropdown list of applicable sites, please go to whois.com or whoishostingthis.com and search for the domain name. Once you have the domain name find the e-mail used to register the site, and then enter it this field. -->
+
+<!-- 
+L: Please use the dropdown menu to select the “Whois” information of the website(s) where a copy of your original photograph appears
+ -->

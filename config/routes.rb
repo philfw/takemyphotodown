@@ -1,5 +1,10 @@
 Takemyphotodown::Application.routes.draw do
 
+  resources :takedowns
+  resources :takedowns do
+    resources :takedown_steps
+  end
+
   resources :image_uploads
 
     root 'info#index'

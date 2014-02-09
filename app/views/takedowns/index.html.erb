@@ -1,0 +1,67 @@
+<h1>Listing takedowns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Notice date</th>
+      <th>Offending website names</th>
+      <th>First name</th>
+      <th>Middle initial</th>
+      <th>Last name</th>
+      <th>Offending urls</th>
+      <th>Destination emails</th>
+      <th>Photograph descriptions</th>
+      <th>Mailing address1</th>
+      <th>Mailing address2</th>
+      <th>Mailing city</th>
+      <th>Mailing state</th>
+      <th>Mailing zip</th>
+      <th>Home phone number</th>
+      <th>Cell phone number</th>
+      <th>Email address</th>
+      <th>Electronically signed datetime</th>
+      <th>Images confirmed</th>
+      <th>As guest</th>
+      <th>Mark for destruction</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @takedowns.each do |takedown| %>
+      <tr>
+        <td><%= takedown.user_id %></td>
+        <td><%= takedown.notice_date %></td>
+        <td><%= takedown.offending_website_names %></td>
+        <td><%= takedown.first_name %></td>
+        <td><%= takedown.middle_initial %></td>
+        <td><%= takedown.last_name %></td>
+        <td><%= takedown.offending_urls %></td>
+        <td><%= takedown.destination_emails %></td>
+        <td><%= takedown.photograph_descriptions %></td>
+        <td><%= takedown.mailing_address1 %></td>
+        <td><%= takedown.mailing_address2 %></td>
+        <td><%= takedown.mailing_city %></td>
+        <td><%= takedown.mailing_state %></td>
+        <td><%= takedown.mailing_zip %></td>
+        <td><%= takedown.home_phone_number %></td>
+        <td><%= takedown.cell_phone_number %></td>
+        <td><%= takedown.email_address %></td>
+        <td><%= takedown.electronically_signed_datetime %></td>
+        <td><%= takedown.images_confirmed %></td>
+        <td><%= takedown.as_guest %></td>
+        <td><%= takedown.mark_for_destruction %></td>
+        <td><%= link_to 'Show', takedown %></td>
+        <td><%= link_to 'Edit', edit_takedown_path(takedown) %></td>
+        <td><%= link_to 'Destroy', takedown, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Takedown', new_takedown_path %>

@@ -1,18 +1,24 @@
 <div class="page-header">
   <div class="col-sm-offset-2">
-    <h2>Take My Photo Down! - Make Sure You Have the Correct Images</h2>
+    <h2>Make Sure You Have the Correct Images</h2>
   </div>
 </div>
-<%= render layout: 'shared/steps_form' do |f| %>
-  <% @step_model.image_uploads.each do |image_upload| %>
-    <%= image_tag image_upload.image_url if image_upload.image? %>
-    <%= link_to "Remove and Delete Image", image_load_url, method: :delete, data: { confirm: 'Are you sure you want to delete this?' } %>
+<%= render layout: 'layouts/steps_form' do |f| %>
+  <% if @steps_model.image_uploads.size == 0 %>
+    <h3 class="text-warning">Return to the previous step to upload a copy of the photo(s).</h3>
+  <% else %>
+    <% @steps_model.image_uploads.each do |image_upload| %>
+      <%= image_tag image_upload.image_url if image_upload.image? %><br />
+      <%= link_to "Remove and Delete Image", image_upload_url(image_upload), method: :delete, data: { confirm: 'Are you sure you want to delete this?' } %>
+      <br />
+      <hr>
+    <% end %>
+    <%= f.input :images_confirmed, label: "These are correct?", as: :radio_buttons %>
+    <hr>
+    <div class="col-sm-offset-3">
+      <%#= link_to_add_fields "Add Cap Table to Upload", f, :file_stores %>
+    </div>
+    <hr>
   <% end %>
-  <%= f.images_confirmed, label: "These are correct?", as: :radio_buttons %>
-  <hr>
-  <div class="col-sm-offset-3">
-    <%#= link_to_add_fields "Add Cap Table to Upload", f, :file_stores %>
-  </div>
-  <hr>
 <% end %>
 

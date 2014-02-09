@@ -1,0 +1,101 @@
+<%= form_for(@takedown) do |f| %>
+  <% if @takedown.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@takedown.errors.count, "error") %> prohibited this takedown from being saved:</h2>
+
+      <ul>
+      <% @takedown.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :notice_date %><br>
+    <%= f.date_select :notice_date %>
+  </div>
+  <div class="field">
+    <%= f.label :offending_website_names %><br>
+    <%= f.text_area :offending_website_names %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :middle_initial %><br>
+    <%= f.text_field :middle_initial %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :offending_urls %><br>
+    <%= f.text_area :offending_urls %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_emails %><br>
+    <%= f.text_area :destination_emails %>
+  </div>
+  <div class="field">
+    <%= f.label :photograph_descriptions %><br>
+    <%= f.text_area :photograph_descriptions %>
+  </div>
+  <div class="field">
+    <%= f.label :mailing_address1 %><br>
+    <%= f.text_field :mailing_address1 %>
+  </div>
+  <div class="field">
+    <%= f.label :mailing_address2 %><br>
+    <%= f.text_field :mailing_address2 %>
+  </div>
+  <div class="field">
+    <%= f.label :mailing_city %><br>
+    <%= f.text_field :mailing_city %>
+  </div>
+  <div class="field">
+    <%= f.label :mailing_state %><br>
+    <%= f.text_field :mailing_state %>
+  </div>
+  <div class="field">
+    <%= f.label :mailing_zip %><br>
+    <%= f.text_field :mailing_zip %>
+  </div>
+  <div class="field">
+    <%= f.label :home_phone_number %><br>
+    <%= f.text_field :home_phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :cell_phone_number %><br>
+    <%= f.text_field :cell_phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :email_address %><br>
+    <%= f.text_field :email_address %>
+  </div>
+  <div class="field">
+    <%= f.label :electronically_signed_datetime %><br>
+    <%= f.check_box :electronically_signed_datetime %>
+  </div>
+  <div class="field">
+    <%= f.label :images_confirmed %><br>
+    <%= f.check_box :images_confirmed %>
+  </div>
+  <div class="field">
+    <%= f.label :as_guest %><br>
+    <%= f.check_box :as_guest %>
+  </div>
+  <div class="field">
+    <%= f.label :mark_for_destruction %><br>
+    <%= f.check_box :mark_for_destruction %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

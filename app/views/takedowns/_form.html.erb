@@ -1,0 +1,27 @@
+<div class="page-header">
+  <div class="col-sm-offset-2">
+    <h2>A DMCA notice must be sent from the copyright owner.  Use this form to add your information.</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-offset-1">
+    <%= simple_form_for(@takedown) do |f| %>
+
+      <%#= f.input :as_guest, label: "", placeholder: "", hint: "" %>
+      <%= f.input :first_name, label: "First Name", placeholder: "", hint: "" %>
+      <%= f.input :middle_initial, label: "Middle Name/Initial", placeholder: "", hint: "" %>
+      <%= f.input :last_name, label: "Last Name", placeholder: "", hint: "" %>
+      <%= f.input :mailing_address1, label: "Mailing Address Line 1", placeholder: "", hint: "" %>
+      <%= f.input :mailing_address2, label: "Mailing Address Line 2", placeholder: "", hint: "" %>
+      <%= f.input :mailing_city, label: "City", placeholder: "", hint: "" %>
+      <%= f.input :mailing_state, label: "State", placeholder: "", hint: "" %>
+      <%= f.input :mailing_zip, label: "Zip Code", placeholder: "", hint: "" %>
+      <%= f.input :home_phone_number, label: "Home Phone Number", placeholder: "", hint: "" %>
+      <%= f.input :cell_phone_number, label: "Cell Phone Number", placeholder: "", hint: "" %>
+      <%= f.input :email_address, label: "Current Email Address", placeholder: "", hint: "" %>
+    
+      <%= f.button :submit, :value => "Start", :class => 'btn btn-primary' %>
+
+    <% end %>
+  </div>
+</div>

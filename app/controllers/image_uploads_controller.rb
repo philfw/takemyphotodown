@@ -56,7 +56,7 @@ class ImageUploadsController < ApplicationController
   def destroy
     @image_upload.destroy
     respond_to do |format|
-      format.html { redirect_to image_uploads_url }
+      format.html { redirect_to begin :back rescue takedown_takedown_step_path(@image_upload.takedown_id, "check_images") end }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ImageUploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_upload_params
-      params.require(:image_upload).permit(:user_id, :takedown_id, :image, :mark_for_destruction)
+      params.require(:image_upload).permit(:user_id, :takedown_id, :image, :mark_for_trash, :title, :description, :selfie, :sending_method_of_photograph, :offending_title, :offending_url, :offending_website_name)
     end
 end

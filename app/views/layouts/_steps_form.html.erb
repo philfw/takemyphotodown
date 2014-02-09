@@ -1,4 +1,13 @@
-<%= simple_form_for @steps_model, wrapper: :bootstrap, html: {class: "form-horizontal"}, url: wizard_path do |f| %>
+
+    <div class="container">
+
+      <div class="starter-template">
+        
+        <p class="lead">
+
+
+
+<%= simple_form_for @steps_model, html: {class: "form-horizontal"}, url: wizard_path do |f| %>
   <% if @steps_model.errors.any? %>
     <div class="error_messages">
       <h2><%= pluralize(@steps_model.errors.count, "error") %> prohibited this valuation model from being saved:</h2>
@@ -12,6 +21,7 @@
   <%= f.input :id, as: :hidden %>
 
     <%= yield f %>
+
   <hr>
   <div class="form-group">
     <div class="actions">
@@ -30,3 +40,9 @@
 <% end %>
 <hr>
 
+
+          
+        </p>
+      </div>
+
+    </div>

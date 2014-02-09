@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  notice_date: 2014-02-08
+  offending_website_names: MyText
+  first_name: MyString
+  middle_initial: MyString
+  last_name: MyString
+  offending_urls: MyText
+  destination_emails: MyText
+  photograph_descriptions: MyText
+  mailing_address1: MyString
+  mailing_address2: MyString
+  mailing_city: MyString
+  mailing_state: MyString
+  mailing_zip: MyString
+  home_phone_number: MyString
+  cell_phone_number: MyString
+  email_address: MyString
+  electronically_signed_datetime: false
+  images_confirmed: false
+  as_guest: false
+  mark_for_destruction: false
+
+two:
+  user_id: 1
+  notice_date: 2014-02-08
+  offending_website_names: MyText
+  first_name: MyString
+  middle_initial: MyString
+  last_name: MyString
+  offending_urls: MyText
+  destination_emails: MyText
+  photograph_descriptions: MyText
+  mailing_address1: MyString
+  mailing_address2: MyString
+  mailing_city: MyString
+  mailing_state: MyString
+  mailing_zip: MyString
+  home_phone_number: MyString
+  cell_phone_number: MyString
+  email_address: MyString
+  electronically_signed_datetime: false
+  images_confirmed: false
+  as_guest: false
+  mark_for_destruction: false

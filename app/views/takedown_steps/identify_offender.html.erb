@@ -1,0 +1,11 @@
+<div class="page-header">
+  <div class="col-sm-offset-2">
+    <h2>Identify the Offending Website</h2>
+  </div>
+</div>
+<%= render layout: 'layouts/steps_form' do |f| %>
+  <%#= f.input :notice_date, label: "", placeholder: "", hint: "" %>
+  <%= f.input :offending_urls, label: "Photograph URL(s)", placeholder: "Copy and Paste URL", hint: "You should include a link to the specific location on the website where your picture can be found. Please copy the web address (URL) where the picture is displayed and paste it into the area. It is not as effective if you only provide the URL to the main webpage as opposed to the specific page where your pictures appear." %>
+  <%= f.input :offending_website_names, label: "E.g., myex.com", placeholder: "What is the name of the website hosting the allegedly infringing photograph?", hint: "Only one DMCA takedown form can be used per website. If you wish to have your photo taken down from multiple websites you will need to fill out a separate DMCA form per website." %>
+  <%= f.input :destination_emails, label: "Email(s) where the DMCA whould be sent", placeholder: "privacy@myxxx.com, publicity@youxxx.com", hint: "This is where the notice will be sent." %>
+<% end %>

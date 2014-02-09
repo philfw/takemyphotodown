@@ -1,0 +1,22 @@
+<div class="page-header">
+  <div class="col-sm-offset-2">
+    <h2>Confirm and Send Notice</h2>
+  </div>
+</div>
+
+
+<%= render layout: 'layouts/steps_form' do |f| %>
+<div class="row">
+  <%= f.input :mark_for_trash, label: "Keep track of this takedown notice in the database?", as: :radio_buttons, collection: [[true, "Destroy"],[false, "Save"]], value_method: :first, label_method: :second, include_blank: false %>
+</div>
+<div class="row">
+  <%= f.input :affirmation_good_faith, label: "I affirm in good faith and under penalty of perjury that all of the information I have provided is accurate.", as: :radio_buttons %>
+</div>
+<div class="row">
+  <%= f.input :is_signed, label: "I hereby electronically sign this DMCA Notice.", as: :radio_buttons %>
+ </div>
+
+
+<% end %>
+
+

@@ -1,0 +1,109 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @takedown.user_id %>
+</p>
+
+<p>
+  <strong>Notice date:</strong>
+  <%= @takedown.notice_date %>
+</p>
+
+<p>
+  <strong>Offending website names:</strong>
+  <%= @takedown.offending_website_names %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @takedown.first_name %>
+</p>
+
+<p>
+  <strong>Middle initial:</strong>
+  <%= @takedown.middle_initial %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @takedown.last_name %>
+</p>
+
+<p>
+  <strong>Offending urls:</strong>
+  <%= @takedown.offending_urls %>
+</p>
+
+<p>
+  <strong>Destination emails:</strong>
+  <%= @takedown.destination_emails %>
+</p>
+
+<p>
+  <strong>Photograph descriptions:</strong>
+  <%= @takedown.photograph_descriptions %>
+</p>
+
+<p>
+  <strong>Mailing address1:</strong>
+  <%= @takedown.mailing_address1 %>
+</p>
+
+<p>
+  <strong>Mailing address2:</strong>
+  <%= @takedown.mailing_address2 %>
+</p>
+
+<p>
+  <strong>Mailing city:</strong>
+  <%= @takedown.mailing_city %>
+</p>
+
+<p>
+  <strong>Mailing state:</strong>
+  <%= @takedown.mailing_state %>
+</p>
+
+<p>
+  <strong>Mailing zip:</strong>
+  <%= @takedown.mailing_zip %>
+</p>
+
+<p>
+  <strong>Home phone number:</strong>
+  <%= @takedown.home_phone_number %>
+</p>
+
+<p>
+  <strong>Cell phone number:</strong>
+  <%= @takedown.cell_phone_number %>
+</p>
+
+<p>
+  <strong>Email address:</strong>
+  <%= @takedown.email_address %>
+</p>
+
+<p>
+  <strong>Electronically signed datetime:</strong>
+  <%= @takedown.electronically_signed_datetime %>
+</p>
+
+<p>
+  <strong>Images confirmed:</strong>
+  <%= @takedown.images_confirmed %>
+</p>
+
+<p>
+  <strong>As guest:</strong>
+  <%= @takedown.as_guest %>
+</p>
+
+<p>
+  <strong>Mark for destruction:</strong>
+  <%= @takedown.mark_for_destruction %>
+</p>
+
+<%= link_to 'Edit', edit_takedown_path(@takedown) %> |
+<%= link_to 'Back', takedowns_path %>
