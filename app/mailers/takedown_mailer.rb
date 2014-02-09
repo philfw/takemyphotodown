@@ -8,14 +8,17 @@ class TakedownMailer < ActionMailer::Base
   	mail to: user.email, subject: "Sign Up Confirmation"
   end
 
-  def contact_valcu(from, to_emails, subject, body)
-    @from = from || "valcu.webmaster@gmail.com"
-  	@to_emails = to_emails
-  	@subject = subject || "DMCA Takedown Notice and Request"
-  	@body = body
-
-    @to_emails.each do |to_email|
-  	  mail to: to_email, subject: @subject, from: @from, body: @body
+  def send_takedown(takedown, from, to_emails, subject)
+    unless takedown.nil? || to_emails.blank?
+      @takedown = takedown
+      @from = from || "takemyphotodown@gmail.com"
+  	  @to_emails = to_emails
+  	  @subject = subject || "DMCA Takedown Notice and Request"
+  	  # @body = body
+      @takedown.image_uploads.each_with_index do |image_upload, index|
+        begin attachments.inline[image_upload.image.to_s.split("/")[-1]] = File.read([Rails.root, "public", image_upload.image.url].join('/')) rescue nil end
+      end
+    	mail to: @to_emails, cc: @from, subject: @subject, from: @from
     end
   end
 end

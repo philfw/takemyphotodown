@@ -3,7 +3,13 @@
     <h2>Confirm and Send Notice</h2>
   </div>
 </div>
-
+<table class="table table-bordered">
+<tr><td>
+<div class="row"><div class="col-sm-10 col-sm-offset-1">
+<%= render partial: 'takedowns/takedown_notice', locals: {takedown: @steps_model} %>
+</div></div>
+</td></tr>
+</table>
 
 <%= render layout: 'layouts/steps_form' do |f| %>
 <div class="row">

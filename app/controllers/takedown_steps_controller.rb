@@ -27,9 +27,15 @@ class TakedownStepsController < ApplicationController
       unless step == steps.last
         # @steps_model.is_signed = FALSE
       end
+      if step == steps.last
+        unless [:affirmation_good_faith, :is_signed, :destination_emails, :email_address, :first_name, :last_name, :images_confirmed].any? {|att| !@steps_model[att] || @steps_model[att].blank? } || @steps_model.image_uploads.size < 1
+          TakedownMailer.send_takedown(@steps_model, @steps_model.email_address, @steps_model.destination_emails, nil).deliver
+        end
+        # @steps_model.is_signed = FALSE
+      end
       if (step == steps.last || params[:commit] == "Save") && @steps_model.save
         if (step == steps.last && params[:commit] != "Save")
-          redirect_to take_return_to({takedown_id: @steps_model.id}) || takedown_url(@steps_model.id, @steps_model)
+          redirect_to takedown_url(@steps_model.id)
         else
           redirect_to wizard_path
         end
@@ -45,7 +51,7 @@ class TakedownStepsController < ApplicationController
   end
   
   def takedown_params
-    params.require(:takedown).permit(:as_guest, :cell_phone_number, :destination_emails, :electronically_signed_datetime, :email_address, :first_name, :home_phone_number, :images_confirmed, :last_name, :mailing_address1, :mailing_address2, :mailing_city, :mailing_state, :mailing_zip, :mark_for_destruction, :middle_initial, :notice_date, :offending_urls, :offending_website_names, :photograph_descriptions, :photograph_names, :affirmation_good_faith, :sending_method_of_photograph, image_uploads_attributes: [ :image, :takedown_id, :title, :description, :mark_for_trash, :selfie, :sending_method_of_photograph, :offending_title, :offending_url, :offending_website_name ])
+    params.require(:takedown).permit(:as_guest, :cell_phone_number, :destination_emails, :electronically_signed_datetime, :email_address, :first_name, :home_phone_number, :images_confirmed, :last_name, :mailing_address1, :mailing_address2, :mailing_city, :mailing_state, :mailing_zip, :mark_for_trash, :middle_initial, :notice_date, :offending_urls, :offending_website_names, :photograph_descriptions, :photograph_names, :affirmation_good_faith, :is_signed, :sending_method_of_photograph, image_uploads_attributes: [ :image, :takedown_id, :title, :description, :mark_for_trash, :selfie, :sending_method_of_photograph, :offending_title, :offending_url, :offending_website_name ])
   end
 
 end

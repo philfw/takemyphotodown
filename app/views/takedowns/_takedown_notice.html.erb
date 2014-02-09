@@ -1,54 +1,59 @@
-					                          <%= f.input :date_today, label: “Date” %>, 
+<% unless takedown.blank? || takedown.image_uploads.blank? %>
+
+					                          <p><%= takedown.notice_date.strftime("%B %-d, %Y") %></p>
 
 
 
-Dear <%= f.input : website_name, label: “E.g., ‘myex.com’”, placeholder: “What is the name of the website hosting the allegedly infringing photograph?”, hint: “Only one DMCA takedown form can be used per website. If you wish to have your photo taken down from multiple websites you will need to fill out a separate DMCA form per website.” %>,
+<p>Dear <%= takedown.offending_website_names %>,</p>
 
-My name is <%= f.input : first_name, label: “First Name” %>, <%= f.input : middle_initial, label: “Middle Initial” %>, <%= f.input : last_name, label: “Last Name” %>, and I am the exclusive owner of the copyright(s) in the image(s) (herein after referred to as “Work(s)”). Such Work(s) is hosted on the website, <%= f.input : website_name, label: “E.g., ‘myex.com’”, placeholder: “What is the name of the website hosting the allegedly infringing photograph?”, ( the “Website”) without my authorization. The Work appears at the following locations: <%= f.input : offending_url(s), label: “Photograph URL(s)”, placeholder: “Copy and Paste URL”, hint: “You should include a link to the specific location on the website where your picture can be found. Please copy the web address (URL) where the picture is displayed and paste it into the area. It is not as effective if you only provide the URL to the main webpage as opposed to the specific page where your pictures appear.” %>  
+<p>My name is <%= takedown.first_name || "N/A" %>, and I am the exclusive owner of the copyright(s) in the image(s) (herein after referred to as "Work(s)"). Such Work(s) is/are hosted on the website(s), <%= takedown.image_uploads.map {|image_upload| image_upload.offending_website_name.blank? ? "N/A" : image_upload.offending_website_name }.uniq.compact.join(', ') || "N/A" %>, ( the "Website") without my authorization. The Work appears at the following locations: <%= takedown.image_uploads.map(&:offending_url).uniq.compact.join(', ') || "N/A" %></p>
 
-Included below is a copy of the original infringing photograph. <%= f.input : image
-, label: “Upload a Copy of the Original Photograph”, placeholder: “Selfie1.jpg”, hint: “Please upload your original photograph. If you no longer have the original photograph, please take a ‘screenshot’ of where the photograph is currently posted and upload the screenshot” %>,
+<p>Included as attachment(s) to this email is are copies of the original infringing photograph(s). </p>
 
-The infringing Work(s) is (are) a photo that I alone took of myself. [CONFIRM WITH INPUT “Selfie”_yes_or_no] Characteristics of Work(s) include: <%= f.input : photograph_descriptions, label: “Photograph Description”, placeholder: “E.g., ‘Selfie in bathroom’” hint: “The description of your photograph should be as complete as possible. Please include where the picture was taken, whether the picture was taken in front of a mirror, the lighting conditions, what pose you were in, and any other identifying features. If there are multiple pictures please describe each picture individually.” %>]. Further, the Work is labeled as <%= f.input : Photograph_name, label: “Does the photograph have a title where it is being hosted on the allegedly infringing website? If so, what is the title name?”, placeholder: “Photograph(s) Label” %>, [NOTE: ONLY GENERATED IF PHOTOGRAPH HAS BEEN NAMED BY INFRINGING WEBSITE]
+<p>Characteristics of Work(s) include and are labeled as: </p>
+<table class="table table-condensed table-bordered table-striped">
+<tr><th>Description</th><th>Label</th><th>Selfie?</th></tr>
+<% takedown.image_uploads.each do |image_upload| %>
+  <tr>
+    <td><%= image_upload.description || "N/A" %></td>
+    <td><%= image_upload.offending_title || "N/A" %></td>
+    <td><%= image_upload.selfie ? "Yes" : "No" %></td>
+  </tr>
+<% end %>
+</table>
 
-This writing is issued to advise you that pursuant to the Digital Millennium Copyright Act of 1998, 17 U.S.C.A. 512(c)(3)(A), the exclusive rights, including the rights of reproduction and public display have been infringed by the display and reproduction of the Work(s) on the Website.
+<p>This writing is issued to advise you that pursuant to the Digital Millennium Copyright Act of 1998, 17 U.S.C.A. 512(c)(3)(A), the exclusive rights, including the rights of reproduction and public display have been infringed by the display and reproduction of the Work(s) on the Website.</p>
 
-You are hereby notified that such Infringing Material must be removed from the Website and any public access to it should also be expeditiously disabled. It is my good faith belief that the use of the Work in the manner complained of herein has not been authorized by me (the exclusive owner of the copyright(s)), by my agent, or by operation of law. To my knowledge and belief, the information contained herein is accurate, and under penalty or perjury, I affirm that I am authorized to take action as the exclusive owner of the copyright(s), if such copyright(s) is allegedly infringed. [CONFIRM WITH INPUT: Affirmation_good_faith_and_penalty_of_perjury ] 
+<p>You are hereby notified that such Infringing Material must be removed from the Website and any public access to it should also be expeditiously disabled. It is my good faith belief that the use of the Work in the manner complained of herein has not been authorized by me (the exclusive owner of the copyright(s)), by my agent, or by operation of law. To my knowledge and belief, the information contained herein is accurate, and under penalty or perjury, I affirm that I am authorized to take action as the exclusive owner of the copyright(s), if such copyright(s) is allegedly infringed.</p>
 
-If you have any questions concerning the substance of this form you may contact me at:
+<p>If you have any questions concerning the substance of this form you may contact me at:</p>
 
-<%= f.input : mailing_address, label: “Mailing Address” %>, 
-<%= f.input : home_phone_number, label: “Home Phone Number” %>, 
-<%= f.input : cell_phone_number, label: “Cell Phone Number” %>
-<%= f.input : email_address, label: “Current E-mail Address” %>
+<p><%= takedown.first_name + " " + takedown.middle_initial + " " + takedown.last_name %></p>
+<p><%= takedown.mailing_address1 %></p>
+<p><%= takedown.mailing_address2 %></p>
+<p><%= takedown.mailing_city %>, <%= takedown.mailing_state %>, <%= takedown.mailing_zip %></p>
+
+<p>Home Phone: <%= takedown.home_phone_number %></p>
+<p>Cell Phone: <%= takedown.cell_phone_number %></p>
+<p>Email: <%= takedown.email_address %></p>
 
  
-Kind Regards,
+<p>Kind Regards,</p>
 
-/s/
+<p>/s/ <%= takedown.first_name %> <%= takedown.middle_initial %> <%= takedown.last_name %></p>
+<hr>
+<p><%= takedown.first_name %> <%= takedown.middle_initial %> <%= takedown.last_name %></p>
+<br />
+<br />
+<hr>
+<table>
+  <% takedown.image_uploads.each do |image_upload| %>
+    <tr>
+      <td><%= image_tag image_upload.image %></td>
+    </tr>
+  <% end %>
+</table>
 
-<%= f.input : first_name, label: “First Name” %>, <%= f.input : middle_initial, label: “Middle Initial” %>, <%= f.input : last_name, label: “Last Name” %>
 
 
-JUST ON FORM 
-
-L: Please indicate how your original photograph(s) was first distributed.
-
-sending_method_of_photograph(s)
-
-H: Please indicate the manner in which the original photograph was distributed. Examples include text, email, mail, or if the photo was stolen in some manner.
- 
-L: Please use the dropdown menu to select the “Whois” information of the website(s) where a copy of your original photograph appears
-
-website_name_dropdown_menu
-
-H: The “Whois” information of the website where the infringing photograph appears is important to ensure that your DMCA takedown notice is delivered to the appropriate location. If your wedsite is not on the dropdown list of applicable sites, please go to whois.com or whoishostingthis.com and search for the domain name. Once you have the domain name find the e-mail used to register the site, and then enter it this field.
- 
-L. Do you affirm in good faith and under penalty of perjury that all of the information you have provided is accurate?
-
-Affirmation_good_faith_and_penalty_of_perjury  
-
-H: It is essential that all of the information that you entered into this form is accurate. It is possible that if you are entering information that you know to be false that you could face potential criminal or civil liability.
-
-br g scaffold Takedown user_id:integer:index notice_date:date offending_website_names:text first_name:string middle_initial:string last_name:string offending_urls:text destination_emails:text photograph_descriptions:text mailing_address1:string mailing_address2:string mailing_city:string mailing_state:string mailing_zip:string home_phone_number:string cell_phone_number:string email_address:string electronically_signed_datetime:boolean images_confirmed:boolean as_guest:boolean mark_for_destruction:boolean
-
+<% end %>
