@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Home", root_url, class: "active" %></li>
-            <li><%= link_to "My Takedowns", takedowns_path %>
+            <!-- <li><%#= link_to "My Takedowns", takedowns_path %> -->
             <li><%= link_to "About", info_about_path %>
             <li><%= link_to "Contact", info_contact_path %>
           </ul>
@@ -59,11 +59,34 @@
     <br />
     <% if defined? wizard_path %>
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-11 col-sm-offset-1">
           <%= render partial: "takedown_steps/wizard_steps_nav", locals: {steps_model: @steps_model, steps: wizard_steps, step: step} %>
         </div>
       </div>
     <% end %>
+      <div class="row">
+        <div class="col-sm-11 col-sm-offset-1">
+<% flash.each do |name, msg| %>
+    <% if name == :notice || name == :error || name == :alert || name == :message || :notice_unfading%>
+        <%
+            alert_type = "alert-info" if(name == :notice)
+            alert_type = "alert-info" if(name == :message)
+            alert_type = "alert alert-info" if(name == :notice_unfading)
+            alert_type = "alert alert-danger" if(name == :error || name == :alert)
+
+            alert_type = "alert alert-info" if(alert_type.nil?)
+
+        %>
+        <div class = "row">
+          <div class="<%= alert_type %>" >
+            <a class="close" data-dismiss="alert">x</a>
+            <%= msg %>
+          </div>
+        </div>
+    <% end %>
+<% end %>
+        </div>
+      </div>
 
     <%= yield %>
 

@@ -28,14 +28,20 @@ class TakedownStepsController < ApplicationController
         # @steps_model.is_signed = FALSE
       end
       if step == steps.last
-        unless [:affirmation_good_faith, :is_signed, :destination_emails, :email_address, :first_name, :last_name, :images_confirmed].any? {|att| !@steps_model[att] || @steps_model[att].blank? } || @steps_model.image_uploads.size < 1
-          TakedownMailer.send_takedown(@steps_model, @steps_model.email_address, @steps_model.destination_emails, nil).deliver
-        end
+
         # @steps_model.is_signed = FALSE
       end
       if (step == steps.last || params[:commit] == "Save") && @steps_model.save
         if (step == steps.last && params[:commit] != "Save")
-          redirect_to takedown_url(@steps_model.id)
+          if [:affirmation_good_faith, :is_signed, :destination_emails, :email_address, :first_name, :last_name, :images_confirmed].any? {|att| !@steps_model[att] || @steps_model[att].blank? } || @steps_model.image_uploads.size < 1
+          	message = "You need to complete all of the fields to send."
+          	flash[:error] = message
+            redirect_to wizard_path(steps.first)
+
+          else
+            TakedownMailer.send_takedown(@steps_model, @steps_model.email_address, @steps_model.destination_emails, nil).deliver
+            redirect_to takedown_url(@steps_model.id)
+          end
         else
           redirect_to wizard_path
         end
