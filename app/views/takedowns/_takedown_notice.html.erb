@@ -8,7 +8,7 @@
 
 <p>My name is <%= takedown.first_name || "N/A" %>, and I am the exclusive owner of the copyright(s) in the image(s) (herein after referred to as "Work(s)"). Such Work(s) is/are hosted on the website(s), <%= takedown.image_uploads.map {|image_upload| image_upload.offending_website_name.blank? ? "N/A" : image_upload.offending_website_name }.uniq.compact.join(', ') || "N/A" %>, ( the "Website") without my authorization. The Work appears at the following locations: <%= takedown.image_uploads.map(&:offending_url).uniq.compact.join(', ') || "N/A" %></p>
 
-<p>Included as attachment(s) to this email is are copies of the original infringing photograph(s). </p>
+<p>Included as attachment(s) to this email is are copies of the original infringing photograph(s). No license or other right is granted in any of the Works or other content included in or with this email or this email itself.  The Works are attached for the sole purpose of identifying the material wrongfully used on the Website.</p>
 
 <p>Characteristics of Work(s) include and are labeled as: </p>
 <table class="table table-condensed table-bordered table-striped">
