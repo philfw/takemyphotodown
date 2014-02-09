@@ -21,7 +21,11 @@ module Takemyphotodown
     # config.i18n.default_locale = :de
 
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts").to_s
+    config.assets.paths << Rails.root.join("fonts").to_s
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.paths << Rails.root.join("vendor", "assets", "images").to_s
     config.assets.paths += Dir["#{config.root}/tmp/image_uploads/**/"]
+
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
   end
 end
