@@ -1,4 +1,8 @@
 class TakedownStepsController < ApplicationController
+  before_action :get_session_id
+  before_action :get_steps_model
+  before_filter :confirm_access_to_takedown
+
 
   include Wicked::Wizard
   STEPS = [:identify_offender, :add_offending_images, :check_images, :confirm_and_send]
@@ -14,7 +18,7 @@ class TakedownStepsController < ApplicationController
   end
   
   def update
-    if @steps_model = Takedown.find(params[:takedown_id])
+    if @steps_model ||= Takedown.find(params[:takedown_id])
       @steps_model.attributes = takedown_params
 
       if step == :identify_offender
@@ -58,6 +62,18 @@ class TakedownStepsController < ApplicationController
   
   def takedown_params
     params.require(:takedown).permit(:as_guest, :cell_phone_number, :destination_emails, :electronically_signed_datetime, :email_address, :first_name, :home_phone_number, :images_confirmed, :last_name, :mailing_address1, :mailing_address2, :mailing_city, :mailing_state, :mailing_zip, :mark_for_trash, :middle_initial, :notice_date, :offending_urls, :offending_website_names, :photograph_descriptions, :photograph_names, :affirmation_good_faith, :is_signed, :sending_method_of_photograph, image_uploads_attributes: [ :image, :takedown_id, :title, :description, :mark_for_trash, :selfie, :sending_method_of_photograph, :offending_title, :offending_url, :offending_website_name ])
+  end
+
+  def get_session_id
+    @session_id = session[:session_id]
+  end
+
+  def get_steps_model
+    @steps_model ||= Takedown.find(params[:takedown_id])
+  end
+
+  def confirm_access_to_takedown
+    @steps_model && @steps_model.session_id == @session_id
   end
 
 end

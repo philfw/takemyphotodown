@@ -1,10 +1,12 @@
 class ImageUploadsController < ApplicationController
   before_action :set_image_upload, only: [:show, :edit, :update, :destroy]
+  before_action :get_session_id
+  before_filter :confirm_access_to_takedown, except: :index
 
   # GET /image_uploads
   # GET /image_uploads.json
   def index
-    @image_uploads = ImageUpload.all
+    @image_uploads = ImageUpload.joins(:takedown).where("takedowns.session_id = ?", @session_id)
   end
 
   # GET /image_uploads/1
@@ -70,5 +72,13 @@ class ImageUploadsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_upload_params
       params.require(:image_upload).permit(:user_id, :takedown_id, :image, :mark_for_trash, :title, :description, :selfie, :sending_method_of_photograph, :offending_title, :offending_url, :offending_website_name)
+    end
+
+    def get_session_id
+      @session_id = session[:session_id]
+    end
+
+    def confirm_access_to_takedown
+      @image_upload && @image_upload.takedown && @image_upload.takedown.session_id == @session_id
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209042440) do
+ActiveRecord::Schema.define(version: 20140210134157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,9 +64,11 @@ ActiveRecord::Schema.define(version: 20140209042440) do
     t.text     "photograph_names"
     t.text     "sending_method_of_photograph"
     t.boolean  "affirmation_good_faith"
+    t.string   "session_id"
   end
 
   add_index "takedowns", ["is_signed"], name: "index_takedowns_on_is_signed", using: :btree
+  add_index "takedowns", ["session_id"], name: "index_takedowns_on_session_id", using: :btree
   add_index "takedowns", ["user_id"], name: "index_takedowns_on_user_id", using: :btree
 
 end
