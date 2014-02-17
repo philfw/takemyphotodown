@@ -20,3 +20,6 @@
 /config/setup_mail.rb
 
 /bundle/**/
+/vendor/bundle
+/vendor/bundle/**/
+/vendor/bundle/**
