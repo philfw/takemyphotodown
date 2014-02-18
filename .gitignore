@@ -17,7 +17,11 @@
 .env
 
 /config/initializers/secret_token.rb
-/config/setup_mail.rb
+/config/initializers/setup_mail.rb
+config/initializers/secret_token.rb
+config/initializers/setup_mail.rb
+secret_token.rb
+setup_mail.rb
 
 /bundle/**/
 /vendor/bundle
